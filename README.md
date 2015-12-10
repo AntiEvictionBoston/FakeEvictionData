@@ -12,7 +12,11 @@ list for Boston, which you can download
 This was written with Python 3 in mind, it's not super likely to work
 easily with Python 2.
 
-Just do:
+First convert the CSV file to a sqlite3 db:
+
+```
+csvsql --db sqlite:///addresses.db --insert --table addresses Master_Address_List.csv
+```
 
 ```
 python generate_evictions.py
