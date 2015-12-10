@@ -26,4 +26,5 @@ then we can run the little Python script:
 python generate_evictions.py
 ```
 
-and answer the prompts! Hooray fake data!
+and answer the prompts! Hooray fake data! It will write them to
+`evictions.json`.
