@@ -6,13 +6,14 @@ def gather_user_input():
     if os.path.isfile("Master_Address_List.csv"):
         params["csv_file"] = "Master_Address_List.csv"
         print("Found Master_Address_List.csv")
-    else
+    else:
         params["csv_file"] = input("Enter the CSV filename: ")
     params["start_date"] = input("Enter the start year: ")
     params["end_date"] = input("Enter the end year: ")
     params["start_date"] += '-01-01'
     params["end_date"] += '-01-01'
     params["number_to_generate"] = input("Enter the number of evictions to generate:")
+    print(params)
 
 
 if __name__ == '__main__':
