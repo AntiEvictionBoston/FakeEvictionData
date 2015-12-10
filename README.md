@@ -17,7 +17,7 @@ First convert the CSV file to a sqlite3 db:
 
 ```
 sudo pip install -r requirements.txt
-csvsql --db sqlite:///addresses.db --insert --table addresses Master_Address_List.csv
+csvsql --db sqlite:///addresses.db --insert --table address Master_Address_List.csv
 ```
 
 then we can run the little Python script:
