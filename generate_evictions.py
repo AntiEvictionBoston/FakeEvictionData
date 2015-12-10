@@ -1,5 +1,6 @@
 from eviction import RandomEviction
 import os
+import json
 
 def gather_user_input():
     params = {}
@@ -19,3 +20,12 @@ def gather_user_input():
 if __name__ == '__main__':
     params = gather_user_input()
     random_eviction = RandomEviction(params)
+    if os.path.isfile("evictions.json"):
+        raise IOError("Evictions file already present - move or delete to generate another")
+    evictions = []
+
+    for i in range(params["number_to_generate"]):
+        evictions.append(random_eviction.generate())
+
+    print(evictions)
+
