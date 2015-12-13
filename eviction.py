@@ -19,8 +19,8 @@ class RandomEviction(object):
         for key, value in zip(self.headers, row) :
             eviction[key] = value
         connection.close()
-        eviction["date"] = radar.random_date(
+        eviction["date"] = str(radar.random_date(
                 start = self.params["start_date"],
                 stop = self.params["end_date"]
-                )
+                ))
         return eviction

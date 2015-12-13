@@ -27,5 +27,7 @@ if __name__ == '__main__':
     for i in range(params["number_to_generate"]):
         evictions.append(random_eviction.generate())
 
-    print(evictions)
+    with open("./evictions.json", "w") as f:
+        json.dump(evictions, f)
 
+    print("%d evictions saved to 'evictions.json'" %(params["number_to_generate"]))
