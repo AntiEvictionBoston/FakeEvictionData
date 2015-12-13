@@ -16,11 +16,11 @@ class RandomEviction(object):
         connection = sqlite3.connect("addresses.db")
         c = connection.cursor()
         row = c.execute('SELECT * FROM address ORDER BY RANDOM() LIMIT 1').fetchone()
-        for key, value in zip(headers, row) :
+        for key, value in zip(self.headers, row) :
             eviction[key] = value
         connection.close()
         eviction["date"] = radar.random_date(
-                start = params["start_date"],
-                stop = params["end_date"]
+                start = self.params["start_date"],
+                stop = self.params["end_date"]
                 )
         return eviction

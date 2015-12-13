@@ -13,8 +13,8 @@ def gather_user_input():
     params["end_date"] = input("Enter the end year: ")
     params["start_date"] += '-01-01'
     params["end_date"] += '-01-01'
-    params["number_to_generate"] = input("Enter the number of evictions to generate:")
-    print(params)
+    params["number_to_generate"] = int(input("Enter the number of evictions to generate:"))
+    return params
 
 
 if __name__ == '__main__':
