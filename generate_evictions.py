@@ -26,6 +26,7 @@ if __name__ == '__main__':
 
     for i in range(params["number_to_generate"]):
         evictions.append(random_eviction.generate())
+    evictions.sort(key = lambda d: d["date"])
 
     with open("./evictions.json", "w") as f:
         json.dump(evictions, f)
