@@ -3,6 +3,7 @@ Master_Address_List.csv
 __pycache__/
 *.py[cod]
 *.db
+*.json
 
 # C extensions
 *.so
