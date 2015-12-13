@@ -27,4 +27,5 @@ python generate_evictions.py
 ```
 
 and answer the prompts! Hooray fake data! It will write them to
-`evictions.json`.
+`evictions.json`. It's pretty quick, so don't worry about asking it for 10
+or 20 thousand evictions.
