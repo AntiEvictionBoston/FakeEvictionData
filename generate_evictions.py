@@ -22,11 +22,7 @@ if __name__ == '__main__':
     random_eviction = RandomEviction(params)
     if os.path.isfile("evictions.json"):
         raise IOError("Evictions file already present - move or delete to generate another")
-    evictions = []
-
-    for i in range(params["number_to_generate"]):
-        evictions.append(random_eviction.generate())
-    evictions.sort(key = lambda d: d["date"])
+    evictions = random_eviction.generate()
 
     with open("./evictions.json", "w") as f:
         json.dump(evictions, f)

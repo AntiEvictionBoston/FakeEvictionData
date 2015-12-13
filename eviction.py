@@ -10,17 +10,23 @@ class RandomEviction(object):
             self.headers = csv.DictReader(f).fieldnames
 
     def generate(self):
-        eviction = {}
+        evictions = []
         if not os.path.isfile("addresses.db"):
             raise FileNotFoundError("Did you generate the sqlite database yet?")
         connection = sqlite3.connect("addresses.db")
         c = connection.cursor()
-        row = c.execute('SELECT * FROM address ORDER BY RANDOM() LIMIT 1').fetchone()
-        for key, value in zip(self.headers, row) :
-            eviction[key] = value
+        sql_to_execute = 'SELECT * FROM address ORDER BY RANDOM() LIMIT {}'.format(self.params["number_to_generate"])
+        rows = c.execute(sql_to_execute).fetchall()
         connection.close()
-        eviction["date"] = str(radar.random_date(
-                start = self.params["start_date"],
-                stop = self.params["end_date"]
-                ))
-        return eviction
+
+        for row in rows:
+            evictions.append({ key: val for key, val in zip(self.headers, row) })
+
+        for eviction in evictions:
+            eviction["date"] = str(radar.random_date(
+                    start = self.params["start_date"],
+                    stop = self.params["end_date"]
+                    ))
+        evictions.sort(key = lambda d: d["date"])
+
+        return evictions
